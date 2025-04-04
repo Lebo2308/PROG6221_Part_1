@@ -44,5 +44,5 @@ namespace PROG6221_Part_1
             }//end of outer for loop
 
         }//end of constructor
-    }
-}
+    }//end of class
+}//end of namespace
