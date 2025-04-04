@@ -15,6 +15,8 @@ namespace PROG6221_Part_1
             new sound() { };
             //creating an instance for the logo class
             new logo() { };
+            //creating an instance for the chatbot class
+            new chatbot() { };
 
         }//end of main
     }//end of class
