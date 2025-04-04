@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -10,7 +11,8 @@ namespace PROG6221_Part_1
     {
         static void Main(string[] args)
         {
-
+            //creating an instance for the sound class
+            new sound() { };
         }
     }
 }
