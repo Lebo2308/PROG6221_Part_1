@@ -103,6 +103,9 @@ namespace PROG6221_Part_1
             // Method for storing replies
             private void store_replies()
             {
+                replies.Add("I am good thanks and you");
+                replies.Add("My purpose is to simulate real-life scenarios where users might encounter cyber \nthreats and provide guidance on avoiding common traps.");
+                replies.Add("You can ask me questions about password safety, phishing and recognising suspicious links.");
                 replies.Add("Passwords need to be protected and kept safe.");
                 replies.Add("SQL injection is very low based on rate.");
                 replies.Add("Attacking phones is based on phishing.");
@@ -110,8 +113,15 @@ namespace PROG6221_Part_1
 
             // Method for storing ignored words
             private void store_ignore()
-            {
-
+            { 
+                ignore.Add("what");
+                ignore.Add("is");
+                ignore.Add("your");
+                ignore.Add("how");
+                ignore.Add("are");
+                ignore.Add("can");
+                ignore.Add("i");
+                ignore.Add("sports");
                 ignore.Add("tell");
                 ignore.Add("me");
                 ignore.Add("about");
