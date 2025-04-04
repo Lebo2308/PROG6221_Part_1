@@ -13,6 +13,9 @@ namespace PROG6221_Part_1
         {
             //creating an instance for the sound class
             new sound() { };
-        }
-    }
-}
+            //creating an instance for the logo class
+            new logo() { };
+
+        }//end of main
+    }//end of class
+}//end of namespace
