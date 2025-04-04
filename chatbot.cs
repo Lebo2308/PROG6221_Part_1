@@ -18,14 +18,18 @@ namespace PROG6221_Part_1
                 try
                 {
                     // Display welcome message and ask for the user's name
+                    Console.ForegroundColor = ConsoleColor.Magenta;
+                    Console.WriteLine("====================================================================");
                     Console.ForegroundColor = ConsoleColor.Cyan;
-                    Console.WriteLine("Welcome to the Molebogeng's Cybersecurity Chatbot Program!");
+                    Console.WriteLine("||   Welcome to the Molebogeng's Cybersecurity Chatbot Program!   ||");
+                    Console.ForegroundColor = ConsoleColor.Magenta;
+                    Console.WriteLine("====================================================================");
                     Console.ForegroundColor= ConsoleColor.Blue;
-                    Console.Write("Chatbot: ");
+                    Console.Write("Chatbot : ");
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.WriteLine("Please enter your name: ");
                     Console.ForegroundColor = ConsoleColor.Green;
-                    Console.Write("USER: ");
+                    Console.Write("User : ");
                     Console.ForegroundColor = ConsoleColor.White;   
                     string userName = Console.ReadLine();
                     Console.ForegroundColor = ConsoleColor.Blue;
