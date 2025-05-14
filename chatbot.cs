@@ -141,7 +141,28 @@ namespace PROG6221_Part_1
                 "Use a VPN to protect your online activity. Consider using a virtual private network (VPN) to encrypt your internet traffic.",
                 "Avoid entering sensitive info on public Wi-Fi networks.Use antivirus software: Install and regularly update antivirus software to protect against malware."
             });
-            }//end of storing answers method
+            //adding the sentimental replies to recognise key words
+            replies.Add("worried", new List<string>
+            {
+                "It's completely understandable to feel that way. Scammers can be very convincing \nLet me share some tips to help stay safe online, please tell me which tips you would like."
+            });
+            replies.Add("you", new List<string>
+            {
+                "im good thanks and you."
+            });
+            replies.Add("you", new List<string>
+            {
+                "im good thanks and you."
+            });
+            replies.Add("you", new List<string>
+            {
+                "im good thanks and you."
+            });
+            replies.Add("you", new List<string>
+            {
+                "im good thanks and you."
+            });
+        }//end of storing answers method
 
             // Method for storing ignored words
             private void store_ignore()
@@ -157,6 +178,7 @@ namespace PROG6221_Part_1
                 ignore.Add("tell");
                 ignore.Add("me");
                 ignore.Add("about");
+                ignore.Add("more");
             }//end of storing ingored words methods
         }//end of class
 }//end of namespace
