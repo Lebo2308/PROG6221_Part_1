@@ -96,7 +96,7 @@ namespace PROG6221_Part_1
                         Console.ForegroundColor = ConsoleColor.Blue;
                         Console.Write("Chatbot: ");
                         Console.ResetColor();
-                    Console.WriteLine(found ? string.Join("\n", response) : "Search for something related to security.");
+                    Console.WriteLine(found ? string.Join("\n", response) : "I'm not sure I understand that. Can you rephrase or ask/search for something related to security.");//error handling when the chatbot does not understand what the user has entered
                     } while (true); // Loop continues until the user types 'exit'
                 }
                 catch (Exception ex)
@@ -146,21 +146,21 @@ namespace PROG6221_Part_1
             {
                 "It's completely understandable to feel that way. Scammers can be very convincing \nLet me share some tips to help stay safe online, please tell me which tips you would like."
             });
-            replies.Add("you", new List<string>
+            replies.Add("curious", new List<string>
             {
-                "im good thanks and you."
+                "Yea, sure. i can hopefully help you understand that more and provide tip on how to stay safe."
             });
-            replies.Add("you", new List<string>
+            replies.Add("furstrated", new List<string>
             {
-                "im good thanks and you."
+                "It's completely understandable to feel that way. Scammers can be very convincing \nLet me share some tips to help stay safe online, please tell me which tips you would like."
             });
-            replies.Add("you", new List<string>
+            replies.Add("happy", new List<string>
             {
-                "im good thanks and you."
+                "Thats great, hope i am of great help and please stay safe online and always stay very catious"
             });
-            replies.Add("you", new List<string>
+            replies.Add("sad", new List<string>
             {
-                "im good thanks and you."
+                "It's completely understandable to feel that way. Scammers can be very convincing \nLet me share some tips to help stay safe online, please tell me which tips you would like."
             });
         }//end of storing answers method
 
