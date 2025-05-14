@@ -68,13 +68,14 @@ namespace PROG6221_Part_1
                         Console.ForegroundColor = ConsoleColor.White;
                         break;
                     }
-
+                    //if statement to store in memory recall
                     if (question.Contains("interest"))
                     {
+                        MemoryRecall memory = new MemoryRecall();
+                        memory.StoreInterest(question);
 
                     }
 
-                    
                     // Splitting input into words and filtering
                     string[] words = question.Split(' ');
                     List<string> filteredWords = words.Where(word => !ignore.Contains(word)).ToList(); // Convert to a List first

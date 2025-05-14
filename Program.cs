@@ -17,6 +17,8 @@ namespace PROG6221_Part_1
             new logo() { };
             //creating an instance for the chatbot class
             new chatbot() { };
+            //creating an instance for the memory recall class
+            new memoryRecall() { };
 
         }//end of main
 
