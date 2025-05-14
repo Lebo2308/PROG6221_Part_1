@@ -9,101 +9,106 @@ namespace PROG6221_Part_1
 {
     public class chatbot
     {
-        
-            // Variable declaration
-            Dictionary<string, List<string>> replies = new Dictionary<string, List<string>>();
-            List<string> ignore = new List<string>();
+        // Variable declaration
+        Dictionary<string, List<string>> replies = new Dictionary<string, List<string>>();
+        List<string> ignore = new List<string>();
 
-            // Constructor
-            public chatbot()
+        // Constructor
+        public chatbot()
+        {
+            try
             {
-                try
+                // Display welcome message and ask for the user's name
+                Console.ForegroundColor = ConsoleColor.Magenta;
+                Console.WriteLine("====================================================================");
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.WriteLine("||   Welcome to the Molebogeng's Cybersecurity Chatbot Program!   ||");
+                Console.ForegroundColor = ConsoleColor.Magenta;
+                Console.WriteLine("====================================================================");
+                Console.ForegroundColor= ConsoleColor.Blue;
+                Console.Write("Chatbot : ");
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine("Please enter your name: ");
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.Write("User : ");
+                Console.ForegroundColor = ConsoleColor.White;   
+                string userName = Console.ReadLine();
+                Console.ForegroundColor = ConsoleColor.Blue;
+                Console.Write("Chatbot : ");
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine($"Hello, {userName}! You can ask me questions about cybersecurity.");
+                
+                // Call both methods to auto store the values
+                store_ignore();
+                store_replies();
+                
+                string question;
+                do
                 {
-                    // Display welcome message and ask for the user's name
-                    Console.ForegroundColor = ConsoleColor.Magenta;
-                    Console.WriteLine("====================================================================");
-                    Console.ForegroundColor = ConsoleColor.Cyan;
-                    Console.WriteLine("||   Welcome to the Molebogeng's Cybersecurity Chatbot Program!   ||");
-                    Console.ForegroundColor = ConsoleColor.Magenta;
-                    Console.WriteLine("====================================================================");
-                    Console.ForegroundColor= ConsoleColor.Blue;
-                    Console.Write("Chatbot : ");
-                    Console.ForegroundColor = ConsoleColor.White;
-                    Console.WriteLine("Please enter your name: ");
-                    Console.ForegroundColor = ConsoleColor.Green;
-                    Console.Write("User : ");
-                    Console.ForegroundColor = ConsoleColor.White;   
-                    string userName = Console.ReadLine();
+                    // Prompt the user for their question
                     Console.ForegroundColor = ConsoleColor.Blue;
                     Console.Write("Chatbot : ");
                     Console.ForegroundColor = ConsoleColor.White;
-                    Console.WriteLine($"Hello, {userName}! You can ask me questions about cybersecurity."); 
-
-                    // Call both methods to auto store the values
-                    store_ignore();
-                    store_replies();
-
-                    string question;
-                    do
+                    Console.WriteLine("Please enter your question. Type 'exit' to quit.");
+                    
+                    // Display the user's name in green before reading the question
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.Write($"{userName} : ");
+                    Console.ResetColor();
+                    
+                    question = Console.ReadLine()?.ToLower(); // Convert input to lowercase
+                    
+                    // Exit condition
+                    if (string.Equals(question, "exit", StringComparison.OrdinalIgnoreCase))
                     {
-                        // Prompt the user for their question
                         Console.ForegroundColor = ConsoleColor.Blue;
-                        Console.Write("Chatbot : ");
+                        Console.Write("Chatbot: ");
+                        Console.ForegroundColor = ConsoleColor.DarkRed;
+                        Console.WriteLine($"Goodbye {userName}! Thank you for using Molebogeng's Cybersecurity Chatbot Program. Goodbye!");
                         Console.ForegroundColor = ConsoleColor.White;
-                        Console.WriteLine("Please enter your question. Type 'exit' to quit.");
+                        break;
+                    }
 
-                        // Display the user's name in green before reading the question
-                        Console.ForegroundColor = ConsoleColor.Green;
-                        Console.Write($"{userName} : ");
-                        Console.ResetColor();
+                    if (question.Contains("interest"))
+                    {
 
-                        question = Console.ReadLine()?.ToLower(); // Convert input to lowercase
+                    }
 
-                        // Exit condition
-                        if (string.Equals(question, "exit", StringComparison.OrdinalIgnoreCase))
-                        {
-                            Console.ForegroundColor = ConsoleColor.Blue;
-                            Console.Write("Chatbot: ");
-                            Console.ForegroundColor = ConsoleColor.DarkRed;
-                            Console.WriteLine($"Goodbye {userName}! Thank you for using Molebogeng's Cybersecurity Chatbot Program. Goodbye!");
-                            Console.ForegroundColor = ConsoleColor.White;
-                            break;
-                        }
+                    
+                    // Splitting input into words and filtering
+                    string[] words = question.Split(' ');
+                    List<string> filteredWords = words.Where(word => !ignore.Contains(word)).ToList(); // Convert to a List first
 
-                        // Splitting input into words and filtering
-                        string[] words = question.Split(' ');
-                        List<string> filteredWords = words.Where(word => !ignore.Contains(word)).ToList(); // Convert to a List first
+                    // Variables for message building
+                    bool found = false;
+                    List<string> response = new List<string>();
 
-                        // Variables for message building
-                        bool found = false;
-                        List<string> response = new List<string>();
-
-                        // Filter replies for matches using LINQ
-                        foreach (string word in filteredWords)
-                        {
+                    // Filter replies for matches using LINQ
+                    foreach (string word in filteredWords)
+                    {
                         if (replies.ContainsKey(word))
                         {
-                            // Select a **random response** from the list
+                            // Select a random response from the list{Randomization}
                             Random rand = new Random();
                             string randomResponse = replies[word][rand.Next(replies[word].Count)];
                             response.Add(randomResponse); // Add matching response
                             found = true;
                         }
                         
-                        }
-
-                        // Display error message or answers
-                        Console.ForegroundColor = ConsoleColor.Blue;
-                        Console.Write("Chatbot: ");
-                        Console.ResetColor();
+                    }
+                    
+                    // Display error message or answers
+                    Console.ForegroundColor = ConsoleColor.Blue;
+                    Console.Write("Chatbot: ");
+                    Console.ResetColor();
                     Console.WriteLine(found ? string.Join("\n", response) : "I'm not sure I understand that. Can you rephrase or ask/search for something related to security.");//error handling when the chatbot does not understand what the user has entered
-                    } while (true); // Loop continues until the user types 'exit'
-                }
+                } while (true); // Loop continues until the user types 'exit'
+            }
                 catch (Exception ex)
                 {
                     Console.WriteLine("An error occurred: " + ex.Message);
                 }
-            }
+        }
 
             // Method for storing replies and it will randomly select from the stored answers and answer using key word recognition
             private void store_replies()
@@ -117,7 +122,7 @@ namespace PROG6221_Part_1
             {
                 "My purpose is to simulate real-life scenarios where users might encounter cyber \nthreats and provide guidance on avoiding common traps."
             });
-
+            //select a random answer from these lists
             replies.Add("password", new List<string>
             {
                 "Passwords need be at least 12 characters long. Passwords need to be protected and kept safe.",
