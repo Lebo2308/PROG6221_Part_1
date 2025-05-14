@@ -11,7 +11,7 @@ namespace PROG6221_Part_1
     {
         
             // Variable declaration
-            List<string> replies = new List<string>();
+            Dictionary<string, List<string>> replies = new Dictionary<string, List<string>>();
             List<string> ignore = new List<string>();
 
             // Constructor
@@ -37,7 +37,7 @@ namespace PROG6221_Part_1
                     Console.ForegroundColor = ConsoleColor.Blue;
                     Console.Write("Chatbot : ");
                     Console.ForegroundColor = ConsoleColor.White;
-                    Console.WriteLine($"Hello, {userName}! You can ask me questions about security."); 
+                    Console.WriteLine($"Hello, {userName}! You can ask me questions about cybersecurity."); 
 
                     // Call both methods to auto store the values
                     store_ignore();
@@ -114,21 +114,39 @@ namespace PROG6221_Part_1
             // Method for storing replies
             private void store_replies()
             {
-                replies.Add("I am good thanks and you");
-                replies.Add("My purpose is to simulate real-life scenarios where users might encounter cyber \nthreats and provide guidance on avoiding common traps.");
-                replies.Add("You can ask me questions about password safety, phishing and recognising suspicious links.");
-                replies.Add("Passwords need to be protected and kept safe. Password need to be atleast 12 characters\n long, they need to include a mix of uppercase and lowercase letters, numbers, and special characters."
-                    + "\nDo not create or use easily guessable information such as your name, birthdate, or common words\n for your passwords. You can use Two-Factor Authentication to add an extra layer of security. Avoid"
-                    + "\nreusing password across multiple accounts and never share your passwords with other people. \nTips you can use:\nAvoid entering sensitive information or logging into accounts on public Wi-Fi networks." 
-                   + "\n You can use a secure browser, such as Tor, to protect your online activity.\nRegularly update your operating system, browser, and other software to ensure you have the latest security patches.");
+            replies.Add("you", new List<string>
+            {
+                "im good thanks and you."
+            });
 
-                replies.Add("Safe browsing is essential to protect yourself from online threats, such as malware, phishing, and ransomware.\nSafe Browsing Tips:\nKeep your browser and operating system up-to-date: Ensure you have the latest security patches and updates." +
-                    "\nUse antivirus software: Install and regularly update antivirus software to protect against malware.\nAvoid using public computers or public Wi-Fi because they may be compromised by malware or hackers.\nUse a VPN: Consider using a virtual private network (VPN) to encrypt your internet traffic." +
-                    "\nOnly download files from trusted sources, and avoid downloading files with suspicious extensions.\nCheck the URL: Verify the website's URL is legitimate and spelled correctly.\n Ensure the website uses HTTPS (Hypertext Transfer Protocol Secure) instead of HTTP.\nCheck for misspellings and grammatical errors because legitimate websites usually don't have errors");
+            replies.Add("purpose", new List<string>
+            {
+                "My purpose is to simulate real-life scenarios where users might encounter cyber \nthreats and provide guidance on avoiding common traps."
+            });
 
-                replies.Add("Phishing is a type of cybercrime that involves tricking individuals into revealing sensitive information,\n such as passwords, credit card numbers, or personal data. You can spot phishing by: \nSuspicious Sender: Verify the sender's email address or phone number.\n" +
-                    "Urgent or Threatening Language: Be cautious of messages that create a sense of urgency or threat.\nSpelling and Grammar Mistakes: Legitimate messages usually don't contain errors.\n Suspicious Links or Attachments " +
-                    "You can protect yourself from phishing by: Verifying information; using Strong Passwords; enabling Two-Factor authentication;\n keeping Software Up-to-Date and Be Cautious with Public Wi-Fi.");
+            replies.Add("password", new List<string>
+            {
+                "Passwords need be at least 12 characters long. Passwords need to be protected and kept safe.",
+                "Use a mix of uppercase, lowercase, numbers, and special characters in passwords.",
+                "You can Enable two-factor authentication to add an extra layer of security.",
+                "Avoid entering sensitive information or logging into accounts on public Wi-Fi networks and \nregularly update your operating system, browser, and other software to ensure you have the latest security patches."
+            });
+
+            replies.Add("phishing", new List<string>
+            {
+                "Phishing is a type of cybercrime that involves tricking individuals into revealing sensitive information,\n such as passwords, credit card numbers, or personal data.",
+                "Phishing emails often create urgency. Always verify the sender.",
+                "Don't click on suspicious links in emails claiming to be from banks or services.\nYou can protect yourself from phishing by: Verifying information; using Strong Passwords; enabling Two-Factor authentication;",
+                "Check for spelling mistakes in emails—legitimate companies rarely make errors."
+            });
+
+            replies.Add("safe browsing", new List<string>
+            {
+                "Safe browsing is essential to protect yourself from online threats, such as malware, phishing, and ransomware.",
+                "Always check that websites use HTTPS for secure connections. Only download files from trusted sources, and avoid downloading files with suspicious extensions.",
+                "Use a VPN to protect your online activity. Consider using a virtual private network (VPN) to encrypt your internet traffic.",
+                "Avoid entering sensitive info on public Wi-Fi networks.Use antivirus software: Install and regularly update antivirus software to protect against malware."
+            });
             }//end of storing answers method
 
             // Method for storing ignored words
