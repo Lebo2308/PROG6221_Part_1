@@ -31,7 +31,10 @@ namespace PROG6221_Part_1
                     var memoryData = LoadMemory();
                     memoryData.Add(userInput);
                     File.WriteAllLines(memoryFilePath, memoryData);
-                    Console.WriteLine("Chatbot: I'll remember your interest for future reference!");
+                    Console.ForegroundColor = ConsoleColor.Blue;
+                    Console.WriteLine("Chatbot : ");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.WriteLine("I'll remember your interest for future reference!");
                 }
             }
             catch (Exception ex)
