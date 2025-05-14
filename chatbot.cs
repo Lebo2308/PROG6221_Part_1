@@ -65,44 +65,38 @@ namespace PROG6221_Part_1
                             Console.ForegroundColor = ConsoleColor.Blue;
                             Console.Write("Chatbot: ");
                             Console.ForegroundColor = ConsoleColor.DarkRed;
-                            Console.WriteLine("\nThank you for using Molebogeng's Cybersecurity Chatbot Program. Goodbye!");
+                            Console.WriteLine($"Goodbye {userName}! Thank you for using Molebogeng's Cybersecurity Chatbot Program. Goodbye!");
                             Console.ForegroundColor = ConsoleColor.White;
                             break;
                         }
 
                         // Splitting input into words and filtering
                         string[] words = question.Split(' ');
-                        ArrayList filteredWords = new ArrayList(words.Where(word => !ignore.Contains(word)).ToList()); // Convert to a List first
+                        List<string> filteredWords = words.Where(word => !ignore.Contains(word)).ToList(); // Convert to a List first
 
                         // Variables for message building
                         bool found = false;
-                        string message = null;
+                        List<string> response = new List<string>();
 
                         // Filter replies for matches using LINQ
                         foreach (string word in filteredWords)
                         {
-                            var matchingReplies = replies.Cast<string>().Where(reply => reply.ToLower().Contains(word)); // Ignore case in replies
-                            foreach (string reply in matchingReplies)
-                            {
-                                if (message == null) 
-                                { 
-                                    message = reply;//assign first found
-                                }
-                                else if (!message.ToString().Contains(reply))
-                                {
-                                    message += reply;//concatenate mutliple replies
-                                }
-                                found = true;
-                                break;
-                            }
+                        if (replies.ContainsKey(word))
+                        {
+                            // Select a **random response** from the list
+                            Random rand = new Random();
+                            string randomResponse = replies[word][rand.Next(replies[word].Count)];
+                            response.Add(randomResponse); // Add matching response
+                            found = true;
+                        }
+                        
                         }
 
                         // Display error message or answers
                         Console.ForegroundColor = ConsoleColor.Blue;
                         Console.Write("Chatbot: ");
                         Console.ResetColor();
-
-                        Console.WriteLine(found ? $"{message}" : "Search something related to security.");
+                    Console.WriteLine(found ? string.Join("\n", response) : "Search for something related to security.");
                     } while (true); // Loop continues until the user types 'exit'
                 }
                 catch (Exception ex)
@@ -111,7 +105,7 @@ namespace PROG6221_Part_1
                 }
             }
 
-            // Method for storing replies
+            // Method for storing replies and it will randomly select from the stored answers and answer using key word recognition
             private void store_replies()
             {
             replies.Add("you", new List<string>
