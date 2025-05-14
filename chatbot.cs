@@ -3,6 +3,7 @@ using System.Linq;
 using System.Text;
 using System;
 using System.IO;
+using System.Collections.Generic;
 
 namespace PROG6221_Part_1
 {
@@ -10,8 +11,8 @@ namespace PROG6221_Part_1
     {
         
             // Variable declaration
-            ArrayList replies = new ArrayList();
-            ArrayList ignore = new ArrayList();
+            List<string> replies = new List<string>();
+            List<string> ignore = new List<string>();
 
             // Constructor
             public chatbot()
