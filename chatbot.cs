@@ -71,7 +71,7 @@ namespace PROG6221_Part_1
                     //if statement to store in memory recall
                     if (question.Contains("interest"))
                     {
-                        MemoryRecall memory = new MemoryRecall();
+                        memoryRecall memory = new memoryRecall();
                         memory.StoreInterest(question);
 
                     }
