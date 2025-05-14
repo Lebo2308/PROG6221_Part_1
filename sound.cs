@@ -29,7 +29,7 @@ namespace PROG6221_Part_1
 
                 }//end of using
 
-            }
+            }//end of try
             catch (Exception error)
             {
                 Console.WriteLine(error.Message);
@@ -37,5 +37,7 @@ namespace PROG6221_Part_1
             }//end of catch
 
         }//end of constructor
+
     }//end of class
+
 }//end of namespace

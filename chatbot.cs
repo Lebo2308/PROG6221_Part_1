@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Text;
 using System;
+using System.IO;
 
 namespace PROG6221_Part_1
 {
@@ -74,7 +75,7 @@ namespace PROG6221_Part_1
 
                         // Variables for message building
                         bool found = false;
-                        StringBuilder message = new StringBuilder();
+                        string message = null;
 
                         // Filter replies for matches using LINQ
                         foreach (string word in filteredWords)
@@ -82,11 +83,16 @@ namespace PROG6221_Part_1
                             var matchingReplies = replies.Cast<string>().Where(reply => reply.ToLower().Contains(word)); // Ignore case in replies
                             foreach (string reply in matchingReplies)
                             {
-                                if (!message.ToString().Contains(reply))
-                                {
-                                    message.AppendLine(reply);
-                                    found = true;
+                                if (message == null) 
+                                { 
+                                    message = reply;//assign first found
                                 }
+                                else if (!message.ToString().Contains(reply))
+                                {
+                                    message += reply;//concatenate mutliple replies
+                                }
+                                found = true;
+                                break;
                             }
                         }
 
@@ -139,5 +145,5 @@ namespace PROG6221_Part_1
                 ignore.Add("me");
                 ignore.Add("about");
             }//end of storing ingored words methods
-        }
-}
+        }//end of class
+}//end of namespace
